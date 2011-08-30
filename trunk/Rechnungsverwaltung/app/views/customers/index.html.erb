@@ -1,0 +1,22 @@
+<h1>alle Kunden</h1>
+
+<table>
+  <tr>
+    <th>Vorname</th>
+    <th>Nachname</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @customers.each do |cust| %>
+  <tr>
+    <td><%= cust.firstname %></td>
+    <td><%= cust.lastname %></td>
+    <td><%#= link_to 'Destroy', cust, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'neuen Kunden anlegen', new_customer_path %>
