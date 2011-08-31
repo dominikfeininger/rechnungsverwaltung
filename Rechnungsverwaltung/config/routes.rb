@@ -4,6 +4,9 @@ Rechnungsverwaltung::Application.routes.draw do
 
   resources :addresses
   resources :customers
+  resources :invoices
+  
+  #map.resources :address
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
