@@ -1,0 +1,166 @@
+
+class InvoicesController < ApplicationController
+  def index
+    @invoices = Invoices.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @invoices }
+    end
+  end
+
+  def new
+    @invoice = Invoice.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @invoice }
+    end
+  end
+
+  def create
+    @invoice = Invoice.new(params[ :invoice])
+
+    respond_to do |format|
+      if @invoice.save
+        format.html { redirect_to(@invoice, :notice => 'Rechnung erstellt') }
+        format.xml  { render :xml => @invoice, :status => :created, :location => @invoice }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @invoice.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def show
+    @invoice = Invoice.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @invoice }
+    end
+  end
+
+  def destroy
+    @invoice = Invoice.find(params[:id])
+    @invoice.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(posts_url) }
+      format.xml  { head :ok }
+    end
+  end
+end
+
+
+##############
+
+<p>
+  <b>Vorname:</b>
+  <%= @customer.firstname %>
+</p>
+<p>
+  <b>Nachname:</b>
+  <%= @customer.lastname %>
+</p>
+<p>
+  <b>Firmenname:</b>
+  <%= @customer.companyname %>
+</p>
+<% @address = Address.new %>
+<% @address = @customer.addresses %>
+<p>
+  <b>Ort:</b>
+  <%= @address.city %>
+</p>
+<p>
+  <b>PLZ:</b>
+  <%= @address.plz %>
+</p>
+<p>
+  <b>Strasse:</b>
+  <%= @address.street %>
+</p>
+
+
+<%= link_to 'Back', customers_path %>
+
+
+
+
+####################
+
+<% @address = find_by_id(params [ :addid])%>
+
+######
+
+
+<%= form_for(@address) do |f| %>
+<% if @address.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+	<ul>
+		<% @address.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="field">
+	<%= f.label :Ort %>
+	<br />
+	<%= f.text_field :city %>
+</div>
+<div class="field">
+	<%= f.label :PLZ %>
+	<br />
+	<%= f.text_field :plz %>
+</div>
+<div class="field">
+	<%= f.label :Strasse %>
+	<br />
+	<%= f.text_field :street %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>
+
+
+######################
+
+<%= form_for(@customer) do |f| %>
+<% if @customer.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+	<ul>
+		<% @customer.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="field">
+	<%= f.label :Vorname %>
+	<br />
+	<%= f.text_field :firstname %>
+</div>
+<div class="field">
+	<%= f.label :Nachname %>
+	<br />
+	<%= f.text_field :lastname %>
+</div>
+<div class="field">
+	<%= f.label :Firmenname %>
+	<br />
+	<%= f.text_field :companyname %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
+
+<% end %>
