@@ -1,0 +1,17 @@
+<h1>adresses/index.html.erb</h1>
+
+<table>
+  <tr>
+    <th>Ort</th>
+    <th>PLZ</th>
+    <th>Strasse</th>
+	<th></th>
+	<th></th>
+	<% @addresses.each do |address| %>
+  <tr>
+    <td><%= address.city %></td>
+    <td><%= address.plz %></td>
+    <td><%= address.street %></td>
+  </tr>
+<% end %>
+</table>

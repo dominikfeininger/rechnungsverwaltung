@@ -1,3 +1,8 @@
 class Address < ActiveRecord::Base
-  has_one :customer
+  
+  validates :city,  :presence => true
+  validates :plz, :presence => true
+  validates :street, :presence => true
+  
+  belongs_to :customer
 end
