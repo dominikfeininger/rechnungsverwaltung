@@ -1,22 +1,32 @@
 <h1>alle Kunden</h1>
-
 <table>
-  <tr>
-    <th>Vorname</th>
-    <th>Nachname</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @customers.each do |cust| %>
-  <tr>
-    <td><%= cust.firstname %></td>
-    <td><%= cust.lastname %></td>
-    <td><%#= link_to 'Destroy', cust, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<tr>
+		<th>Vorname</th>
+		<th>Nachname</th>
+		<th>Firmenname</th>
+		<th>Ort</th>
+		<th>PLZ</th>
+		<th>Strasse</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @customers.each do |c| %>
+	<% @addresses = c.addresses %>
+	<% @addresses.each do |a| %>
+	<tr>
+		<!-- 	customer -->
+		<td><%= c.firstname %></td>
+		<td><%= c.lastname %></td>
+		<td><%= c.companyname %></td>
+		<!-- 	address -->
+		<td><%= a.city %></td>
+		<td><%= a.plz %></td>
+		<td><%= a.street %></td>
+		<td><%= link_to 'Details', c %></td>
+	</tr>
+	<% end %>
+	<% end %>
 </table>
-
 <br />
-
 <%= link_to 'neuen Kunden anlegen', new_customer_path %>
+<%= link_to 'Zurueck', home_index_path %> 

@@ -1,1 +1,29 @@
-
+<p>
+	<b>Vorname:</b>
+	<%= @customer.firstname %>
+</p>
+<p>
+	<b>Nachname:</b>
+	<%= @customer.lastname %>
+</p>
+<p>
+	<b>Firmenname:</b>
+	<%= @customer.companyname %>
+</p>
+<% @address = Address.new %>
+<% @addresses = @customer.addresses %>
+<% @addresses.each do |a| %>
+<p>
+	<b>Ort:</b>
+	<%= a.city %>
+</p>
+<p>
+	<b>PLZ:</b>
+	<%= a.plz %>
+</p>
+<p>
+	<b>Strasse:</b>
+	<%= a.street %>
+</p>
+<%end%>
+<%= link_to 'Zurueck', customers_path %> 

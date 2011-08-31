@@ -1,4 +1,9 @@
 class Customer < ActiveRecord::Base
-  has_one :address
+  
+  validates :firstname, :presence => true
+  validates :lastname, :presence => true
+  validates :companyname, :presence => true
+  
+  has_many :addresses, :dependent => :destroy
 end
   
