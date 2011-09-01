@@ -5,5 +5,6 @@ class Customer < ActiveRecord::Base
   validates :companyname, :presence => true
   
   has_many :addresses, :dependent => :destroy
+  has_many :invoices,  :dependent => :destroy
 end
   
