@@ -45,7 +45,7 @@ class AddressesController < ApplicationController
     @address.destroy
 
     respond_to do |format|
-      format.html { redirect_to(posts_url) }
+      format.html { redirect_to(customers_path) }
       format.xml  { head :ok }
     end
   end

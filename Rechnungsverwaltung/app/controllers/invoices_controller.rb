@@ -18,7 +18,9 @@ class InvoicesController < ApplicationController
   end
 
   def create
+    #@customer = Customer.create(params[:customer])
     @invoice = Invoice.new(params[ :invoice])
+    #@invoice.customer = @customer
 
     respond_to do |format|
       if @invoice.save
@@ -45,7 +47,7 @@ class InvoicesController < ApplicationController
     @invoice.destroy
 
     respond_to do |format|
-      format.html { redirect_to(posts_url) }
+      format.html { redirect_to(invoices_path) }
       format.xml  { head :ok }
     end
   end

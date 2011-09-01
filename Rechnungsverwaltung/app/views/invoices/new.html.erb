@@ -1,1 +1,22 @@
-<h1>invoices/new.thml.erb</h1>
+<% @customer = Customer.new %>
+<%= form_for(@customer) do |c| %>
+<%= form_for(@invoice) do |i| %>
+
+<div class="field">
+	<%= i.label :Rechnungsnummer %>
+	<br />
+	<%= i.text_field :invoicenr %>
+</div>
+<div class="field">
+	<%= c.label :Firmenname %>
+	<br />
+	<%= c.text_field :companyname %>
+</div>
+<div class="actions">
+	<%= i.submit "Rechnung anlegen"%>
+</div>
+<% end %>
+<% end %>
+<br>
+<br>
+<%= link_to 'Zurueck', invoices_path %>

@@ -1,3 +1,57 @@
+<select id="customer_id" name="customer[id]">
+	<% c = Customer.find(:all, :order => "companyname") 
+	c.each do |cust| %>
+		<option value="<%= cust.id %>"
+			selected="selected"
+			>
+			<%= cust.companyname %>
+		</option>
+	<% end %>
+</select>
+
+
+###########################
+
+<%= form_for(@invoice) do |i| %>
+<% @customer = Customer.new %>
+<%= form_for(@customer) do |c| %>
+<div class="field">
+	<%= i.label :Rechnungsnummer %>
+	<br />
+	<%= i.text_field :invoicenr %>
+</div>
+
+<select id="customer_id" name="customer[id]">
+	<% @cust = Customer.find(:all, :order => "companyname") 
+	@cust.each do |cust| %>
+		<option value="<%= cust.id %>"
+			selected="selected"
+			>
+			<%= cust.companyname %>
+		</option>
+	<% end %>
+</select>
+<div class="actions">
+	<%= i.submit "Rechnung anlegen"%>
+</div>
+<% end %>
+<br>
+<br>
+<%= link_to 'Zurueck', invoices_path %>
+
+
+####################
+
+<%= @cust = Customer.find(:all, :order => "id")
+collection_select("customer", "id", @cust, :id, :companyname ) 
+%>
+
+######################
+
+letztezwei stellen der jahreszahl-fünfstellig
+
+##################
+
 
 class InvoicesController < ApplicationController
   def index
@@ -53,8 +107,7 @@ class InvoicesController < ApplicationController
 end
 
 
-##############
-
+############################
 <p>
   <b>Vorname:</b>
   <%= @customer.firstname %>
@@ -92,7 +145,7 @@ end
 
 <% @address = find_by_id(params [ :addid])%>
 
-######
+#######################
 
 
 <%= form_for(@address) do |f| %>

@@ -18,11 +18,13 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @address = Address.create(params[:address])
-
     @customer = Customer.new(params[:customer])
-
+    
+    @address = Address.create(params[:address])
     @customer.addresses << @address
+    
+    @invoice = Invoice.create(params[:invoice])
+    @customer.invoices << @invoice
 
     respond_to do |format|
       if @customer.save
@@ -49,7 +51,7 @@ class CustomersController < ApplicationController
     @customer.destroy
 
     respond_to do |format|
-      format.html { redirect_to(posts_url) }
+      format.html { redirect_to(customers_path) }
       format.xml  { head :ok }
     end
   end
