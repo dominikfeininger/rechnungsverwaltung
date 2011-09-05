@@ -5,6 +5,7 @@ Rechnungsverwaltung::Application.routes.draw do
   resources :addresses
   resources :customers
   resources :invoices
+  resources :invoice_posses
   
   #map.resources :address
 
