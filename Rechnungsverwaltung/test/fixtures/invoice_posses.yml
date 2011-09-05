@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  invoiceposnr: MyString
+  description: MyText
+  qty: 1
+  unitprice: 9.99
+  total: 9.99
+
+two:
+  invoiceposnr: MyString
+  description: MyText
+  qty: 1
+  unitprice: 9.99
+  total: 9.99
