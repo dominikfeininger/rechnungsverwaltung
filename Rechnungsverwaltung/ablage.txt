@@ -1,3 +1,49 @@
+<%= form_for(@invoice) do |i| %>
+<% @invoicepos = InvoicePoss.new %>
+<%= form_for(@invoicepos) do |ip| %>
+<div class="field">
+	<%= i.label :Rechnungsnummer %>
+	<br />
+	<%= i.text_field :invoicenr %>
+</div>
+Firma waehlen
+<br/>
+<select id="customer_id" name="customer[id]">
+	<% @cust = Customer.find(:all, :order => "companyname")
+	@cust.each do |cust| %> <option value="<%= cust.id %>"
+	<% if @invoice.customer_id == cust.id %> selected="selected" <% end %>
+	> <%= cust.companyname %> </option>
+	<% end %>
+</select>
+<br/>
+Rechnungspositionen:
+<div class="field">
+	<%= ip.label :Positionsnummer %>
+	<br />
+	<%= ip.text_field :invoiceposnr %>
+</div>
+<div class="field">
+	<%= ip.label :Positionsbescheibung %>
+	<br />
+	<%= ip.text_field :description %>
+</div>
+<br/>
+<br/>
+<div class="actions">
+	<%= i.submit "Rechnung anlegen"%>
+</div>
+<% end %>
+<% end %>
+<br>
+<br>
+<%= link_to 'Zurueck', invoices_path %> 
+
+############################
+
+<% if @invoice.customer_id == cust.id %> selected="selected" <% end %>
+
+############################
+
 <select id="customer_id" name="customer[id]">
 	<% c = Customer.find(:all, :order => "companyname") 
 	c.each do |cust| %>
