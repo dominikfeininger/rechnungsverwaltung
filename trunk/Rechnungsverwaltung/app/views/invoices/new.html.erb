@@ -1,17 +1,49 @@
-<% @customer = Customer.new %>
-<%= form_for(@customer) do |c| %>
 <%= form_for(@invoice) do |i| %>
-
+<% @invoicepos = InvoicePoss.new %>
+<%= form_for(@invoicepos) do |ip| %>
 <div class="field">
 	<%= i.label :Rechnungsnummer %>
 	<br />
 	<%= i.text_field :invoicenr %>
 </div>
+Firma waehlen
+<br/>
+<select id="customer_id" name="customer[id]">
+	<% @cust = Customer.find(:all, :order => "companyname")
+	@cust.each do |cust| %> <option value="<%= cust.id %>"
+	<% if @invoice.customer_id == cust.id %> selected="selected" <% end %>
+	> <%= cust.companyname %> </option>
+	<% end %>
+</select>
+<br/>
+Rechnungspositionen:
 <div class="field">
-	<%= c.label :Firmenname %>
+	<%= ip.label :Positionsnummer %>
 	<br />
-	<%= c.text_field :companyname %>
+	<%= ip.text_field :invoiceposnr %>
 </div>
+<div class="field">
+	<%= ip.label :Positionsbescheibung %>
+	<br />
+	<%= ip.text_field :description %>
+</div>
+<div class="field">
+	<%= ip.label :Menge %>
+	<br />
+	<%= ip.text_field :qty %>
+</div>
+<div class="field">
+	<%= ip.label :Preis %>
+	<br />
+	<%= ip.text_field :unitprice %>
+</div>
+<div class="field">
+	<%= ip.label :Gesamt %>
+	<br />
+	<%= ip.text_field :total %>
+</div>
+<br/>
+<br/>
 <div class="actions">
 	<%= i.submit "Rechnung anlegen"%>
 </div>
@@ -19,5 +51,4 @@
 <% end %>
 <br>
 <br>
-<%= link_to 'Zurueck', invoices_path %>
-
+<%= link_to 'Zurueck', invoices_path %> 

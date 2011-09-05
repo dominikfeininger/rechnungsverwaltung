@@ -1,16 +1,19 @@
-<!-- <h1>invoices/index.html.erb</h1> -->
-
 <table>
   <tr>
     <th>Rechnungsnummer</th>
+    <th>Firmenname</th>
 	<th></th>
 	<th></th>
 	<% @invoices.each do |i| %>
+	<% @customer = i.customer%>
+	
   <tr>
     <td><%= i.invoicenr %></td>
+    <td><%= @customer.companyname %></td>
     <td><%= link_to 'Details', i %></td>
   </tr>
 <% end %>
+
 </table>
 
 <%= link_to 'Zurueck', home_index_path %>

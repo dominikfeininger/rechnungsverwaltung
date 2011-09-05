@@ -22,9 +22,6 @@ class CustomersController < ApplicationController
     
     @address = Address.create(params[:address])
     @customer.addresses << @address
-    
-    @invoice = Invoice.create(params[:invoice])
-    @customer.invoices << @invoice
 
     respond_to do |format|
       if @customer.save
