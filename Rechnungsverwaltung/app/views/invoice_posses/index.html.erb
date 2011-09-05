@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>Rechnungspos</th>
+	<th></th>
+	<th></th>
+	<% @invoiceposs.each do |i| %>
+	
+  <tr>
+    <td><%= i.invoiceposnr %></td>
+    <td><%= link_to 'Details', i %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<%= link_to 'Zurueck', home_index_path %>
+<%= link_to 'Neue Position', new_invoicepos_path %>  

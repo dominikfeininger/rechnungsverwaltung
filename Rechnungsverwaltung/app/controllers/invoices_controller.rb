@@ -18,9 +18,14 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    #@customer = Customer.create(params[:customer])
+
     @invoice = Invoice.new(params[ :invoice])
-    #@invoice.customer = @customer
+    
+    @invoicepos = InvoicePoss.create(params[ :invoicepos])
+        
+    @invoice.customer_id = (params[ :customer] [:id])
+    #@invoice.invoice_posses_id = (params[ :invoice_poss] [:id])
+    @invoice.invoice_posses << @invoicepos
 
     respond_to do |format|
       if @invoice.save
