@@ -30156,3 +30156,21 @@ Started GET "/home/index" for 127.0.0.1 at 2011-09-01 15:04:00 +0200
   Processing by HomeController#index as HTML
 Rendered home/index.html.erb within layouts/application (2.0ms)
 Completed 200 OK in 15ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-05 09:15:25 +0200
+  [1m[36mSQL (76.0ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.0ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.0ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.0ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (24.0ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.0ms)[0m  SHOW TIME ZONE
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 36ms (Views: 35.0ms | ActiveRecord: 100.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-05 09:18:12 +0200
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 13ms (Views: 13.0ms | ActiveRecord: 0.0ms)
