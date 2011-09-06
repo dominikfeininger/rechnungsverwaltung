@@ -1,4 +1,7 @@
 class InvoicePossesController < ApplicationController
+  def setPosNr
+    
+  end
   def index
     @invoiceposses = InvoicePoss.all
 
