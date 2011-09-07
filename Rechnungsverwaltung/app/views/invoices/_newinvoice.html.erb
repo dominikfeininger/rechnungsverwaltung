@@ -1,11 +1,11 @@
-<%= form_tag do %>
-<% @invoice = Invoice.new %>
-<%= label_tag(@invoice.invoicenr, "Rechnungsnummer") %><br/>
-<%= text_field_tag(@invoice.invoicenr) %>
+<%= form_tag({:controller => 'invoices', :action => 'create'}) do %>
+Rechnungsnummer:
+<br/>
+<%= text_field_tag(:invoicenr) %>
 <br/>
 Firma waehlen
 <br/>
-<select id="customer_id" name="customer[id]">
+<select id="customer_id" name="customer_id">
 	<% @cust = Customer.find(:all, :order => "companyname")
 	@cust.each do |cust| %> <option value="<%= cust.id %>"
 	<% if @invoice.customer_id == cust.id %> selected="selected" <% end %>
@@ -14,8 +14,5 @@ Firma waehlen
 </select>
 <br/>
 <br/>
-<!-- TODO: schickt keine rechnungspos ID !!! -->
-<br/>
-<br/>
-   <%= submit_tag "Rechnung anlegen", :name => nil, :id => 'search_submit', :url =>'http://localhost:3000'  %>
-<% end %>
+<%= submit_tag "Rechnung anlegen" %>
+<% end %> 
