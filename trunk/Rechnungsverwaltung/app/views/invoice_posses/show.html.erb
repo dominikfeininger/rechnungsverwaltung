@@ -1,1 +1,22 @@
-<h1>invoiceposs/show.html.erb</h1>
+<p>
+	<b>Rechnungsposition:</b>
+	<br/>
+	<br/>
+	<b>RechnungPosNnummer:</b>
+	<%= @invoiceposs.invoiceposnr%>
+	<br/>
+	<b>Beschreibung:</b>
+	<%= @invoiceposs.description%>
+	<br/>
+	<b>Menge:</b>
+	<%= @invoiceposs.qty%>
+	<br/>
+	<b>StueckPreis:</b>
+	<%= @invoiceposs.unitprice%>
+	<br/>
+	<b>Total:</b>
+	<%= @invoiceposs.total%>
+	<br/>
+</p>
+<br/>
+<%= link_to 'Zurueck', invoices_path %> 

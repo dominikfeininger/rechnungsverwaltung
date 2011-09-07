@@ -11,15 +11,28 @@
 </p>
 <p>
 	<b>Rechnungspositionen:</b>
+	<br/>
 	<% @invoiceposses.each do |ip|%>
+	<br/>
+	<b>RechnungPosNnummer:</b>
 	<%= ip.invoiceposnr%>
-	<%= ip.total%>
-	<%= ip.unitprice%>
-	<%= ip.qty%>
+	<br/>
+	<b>Beschreibung:</b>
 	<%= ip.description%>
+	<br/>
+	<b>Menge:</b>
+	<%= ip.qty%>
+	<br/>
+	<b>StueckPreis:</b>
+	<%= ip.unitprice%>
+	<br/>
+	<b>Total:</b>
+	<%= ip.total%>
+	<br/>
 </p>
-<%end%><br/><br/>
+<%end%>
+<%= render 'invoice_posses/newinvoicepos' %>
 <br/>
-
-
+<br/>
+<br/>
 <%= link_to 'Zurueck', invoices_path %> 

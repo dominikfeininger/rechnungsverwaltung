@@ -1,0 +1,27 @@
+<%= form_tag({:controller => 'invoice_posses', :action => 'create'}) do %>
+<% 2.times do%>
+<% i=0 %>
+<br/>
+<b>Neue Rechnungspositionen:</b>
+<br/>
+<br/>
+<table>
+	<tr>
+		<td> <%= label_tag(:invoiceposnr, "Positionsnummer") %> </td>
+		<td> <%= label_tag(:description, "Positionsbescheibung") %> </td>
+		<td> <%= label_tag(:qty, "Menge") %> </td>
+		<td> <%= label_tag(:unitprice, "Preis") %> </td>
+		<td> <%= label_tag(:total, "Gesamt") %> </td>
+	</tr>
+	<tr>
+		<% hidden_field_tag('@#{i}[:invoice_id]', @invoice.id) %> <td> <%= text_field_tag('@#{i}[:invoiceposnr]', 1) %></td>
+		<td> <%= text_field_tag('@#{i}[:description]') %></td>
+		<td> <%= text_field_tag('@#{i}[:qty]') %></td>
+		<td> <%= text_field_tag('@#{i}[:unitprice]') %></td>
+		<td> <%= text_field_tag('@#{i}[:total]') %></td>
+	</tr>
+</table>
+<% i=i+1%>
+<% end %>
+<%= submit_tag ("Rechnungspositionen anlegen")%>
+<% end %> 
