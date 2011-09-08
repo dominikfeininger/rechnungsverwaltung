@@ -1,6 +1,6 @@
 <% @customer = Customer.new %>
 <% @customer = @invoice.customer %>
-<% @invoiceposses = @invoice.invoice_posses %>
+<% @invoiceposses = InvoicePoss.find_all_by_invoice_id(@invoice.id) %>
 <p>
 	<b>Rechnungsnummer:</b>
 	<%= @invoice.invoicenr %>
@@ -9,30 +9,8 @@
 	<b>Firmenname:</b>
 	<%= @customer.companyname %>
 </p>
-<p>
-	<b>Rechnungspositionen:</b>
-	<br/>
-	<% @invoiceposses.each do |ip|%>
-	<br/>
-	<b>RechnungPosNnummer:</b>
-	<%= ip.invoiceposnr%>
-	<br/>
-	<b>Beschreibung:</b>
-	<%= ip.description%>
-	<br/>
-	<b>Menge:</b>
-	<%= ip.qty%>
-	<br/>
-	<b>StueckPreis:</b>
-	<%= ip.unitprice%>
-	<br/>
-	<b>Total:</b>
-	<%= ip.total%>
-	<br/>
-</p>
-<%end%>
 <%= render 'invoice_posses/newinvoicepos' %>
 <br/>
 <br/>
 <br/>
-<%= link_to 'Zurueck', invoices_path %> 
+<%= link_to 'Zurueck', invoices_path() %> 
