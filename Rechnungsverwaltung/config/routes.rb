@@ -2,6 +2,13 @@ Rechnungsverwaltung::Application.routes.draw do
   
   get "home/index"
 
+  post  'invoice_posses/create' => 'invoice_posses#create', :as => :create_invoices_posses
+  post  'invoice/create' => 'invoices#create', :as => :create_invoices
+  #get   'invoices/:id' => 'invoices#show', :as => :show_invoice_id_get
+  #post  'invoices/:id' => 'invoices#show', :as => :show_invoice_id_post
+
+  
+  #default routes as lower priority
   resources :addresses
   resources :customers
   resources :invoices
