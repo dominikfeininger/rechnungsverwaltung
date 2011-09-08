@@ -1,5 +1,4 @@
 class InvoicePossesController < ApplicationController
-
   def index
     @invoiceposses = InvoicePoss.all
   end
@@ -8,27 +7,34 @@ class InvoicePossesController < ApplicationController
     @invoiceposs = InvoicePoss.new
   end
 
-  def create
-    #while new postitions exists
-    while params.has_key?("pos#{i}")
-      @invoiceposs = InvoicePoss.new({:invoice_id => params["pos#{i}"][:invoice_id], :invoiceposnr => params["pos#{i}"][:invoiceposnr], :qty => params["pos#{i}"][:qty], :description => params["pos#{i}"][:description], :unitprice => params["pos#{i}"][:unitprice], :total => params["pos#{i}"][:total]})
-       #position already in database?
-      if (@invoiceposs.id != Invoice.find_by_id(params[:id]))
-        #save position
-        respond_to do |format|
-          if @invoiceposs.save
-            format.html { redirect_to(@invoiceposs, :notice => 'Position erstellt') }
-          else
-            format.html { render :action => "new" }
-          end
-        end
+  def create #show
+    #get number of pos from view
+    x = params[:position_count].to_i
+    #loop through all pos
+    x.times  do |i|
+      #get the current pos in the iparams val 
+      iparams = params["pos#{i}"]
+      #search for pos_id
+      if iparams.has_key?(:position_id)
+        #already exists
+        @invoiceposs = InvoicePoss.find_by_id(iparams[:position_id])
+        #delete attribut position_id
+        iparams.delete(:position_id)
+        @invoiceposs.update_attributes(iparams)
+      else
+        #does not exist - create new
+        @invoiceposs = InvoicePoss.new(iparams)
       end
+      #save
+      @invoiceposs.save
     end
+    #path to show invoice with current id
+    redirect_to :controller => :invoices, :action => :show, :id => params[:invoice_id]
+    #redirect_to invoices_path(:id => params[:invoice_id])
+    
+    
   end
 
-  def show
-    @invoiceposs = InvoicePoss.find(params[:id])
-  end
 
   def destroy
     @invoiceposs = InvoicePoss.find(params[:id])
