@@ -21,8 +21,9 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def show
-    @invoice = Invoice.find(params[:id])
+  def custshow
+    v = params[:customerid]
+    @invoice = Invoice.find_by_customer_id(v)
   end
 
   def destroy

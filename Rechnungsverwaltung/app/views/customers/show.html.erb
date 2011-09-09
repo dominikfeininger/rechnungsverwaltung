@@ -10,6 +10,10 @@
 	<b>Firmenname:</b>
 	<%= @customer.companyname %>
 </p>
+<p>
+	<b>Emailadresse:</b>
+	<%= @customer.email %>
+</p>
 <% @address = Address.new %>
 <% @addresses = @customer.addresses %>
 <% @addresses.each do |a| %>

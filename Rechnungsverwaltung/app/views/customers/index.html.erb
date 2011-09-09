@@ -23,7 +23,7 @@
 		<td><%= a.plz %></td>
 		<td><%= a.street %></td>
 		<td><%= link_to 'Details', c %></td>
-		<td><%= link_to 'Rechnungen', invoices_path %></td>
+		<td><%= link_to 'Rechnungen', show_customer_invoice_path(c.id) %></td>
 	</tr>
 	<% end %>
 	<% end %>

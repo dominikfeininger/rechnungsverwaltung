@@ -1,0 +1,12 @@
+<% @customer = @invoice.customer %>
+<p>
+	<b>Rechnungsnummer:</b>
+	<%= @invoice.invoicenr %>
+</p>
+<p>
+	<b>Firmenname:</b>
+	<%= @customer.companyname %>
+</p>
+<br/>
+<br/>
+<%= link_to 'Zurueck', invoices_path() %> 

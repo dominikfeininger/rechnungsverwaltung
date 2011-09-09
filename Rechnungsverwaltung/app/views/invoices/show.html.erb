@@ -1,5 +1,5 @@
 <% @customer = Customer.new %>
-<% @customer = @invoice.customer %>
+<% @customer = @invoices.customer %>
 <% @invoiceposses = InvoicePoss.find_all_by_invoice_id(@invoice.id) %>
 <p>
 	<b>Rechnungsnummer:</b>
