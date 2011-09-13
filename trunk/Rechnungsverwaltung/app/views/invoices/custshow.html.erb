@@ -1,12 +1,13 @@
-<% @customer = @invoice.customer %>
-<p>
-	<b>Rechnungsnummer:</b>
-	<%= @invoice.invoicenr %>
-</p>
+<% @invoices = @customer.invoices%>
 <p>
 	<b>Firmenname:</b>
 	<%= @customer.companyname %>
 </p>
+<% @invoices.each do |i| %>
+<p>
+	<b>Rechnungsnummer:</b>
+	<%= i.invoicenr %>
+</p>
+<%end%>
 <br/>
-<br/>
-<%= link_to 'Zurueck', invoices_path() %> 
+<%= link_to 'Zurueck', customers_path() %> 

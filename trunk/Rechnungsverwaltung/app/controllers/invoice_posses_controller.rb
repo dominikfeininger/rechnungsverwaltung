@@ -29,10 +29,7 @@ class InvoicePossesController < ApplicationController
       @invoiceposs.save
     end
     #path to show invoice with current id
-    redirect_to :controller => :invoices, :action => :show, :id => params[:invoice_id]
-    #redirect_to invoices_path(:id => params[:invoice_id])
-    
-    
+    redirect_to :controller => :invoices, :action => :show, :id => params[:invoice_id]    
   end
 
 
