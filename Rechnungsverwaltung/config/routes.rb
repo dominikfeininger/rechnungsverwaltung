@@ -2,20 +2,27 @@ Rechnungsverwaltung::Application.routes.draw do
   
   get "home/index"
 
-  post  'invoice_posses/create' => 'invoice_posses#create', :as => :create_invoices_posses
-  post  'invoice/create' => 'invoices#create', :as => :create_invoices
-  match  'invoice/custshow' => 'invoices#custshow', :as => :show_customer_invoice
-  #get   'invoices/:id' => 'invoices#show', :as => :show_invoice_id_get
-  #post  'invoices/:id' => 'invoices#show', :as => :show_invoice_id_post
-
+  post   'invoice_posses/create' => 'invoice_posses#create', :as => :create_invoices_posses
+  post   'invoices/create' => 'invoices#create', :as => :create_invoices
+  match  'invoices/custshow/:id' => 'invoices#custshow', :as => :show_customer_invoice
+  match  'customers/show' => 'customers#show'
+  #get    'invoices/:id' => 'invoices#custshow', :as => :show_customer_invoice
+  
   
   #default routes as lower priority
   resources :addresses
   resources :customers
+  get  'customers' => 'customers#index'
+  get  'customers/show' => 'customers#show'
+  get  'customers/:id' => 'customers#show'
   resources :invoices
+  get    'invoices/new' => 'invoices#new'
+  get    'invoices/index' =>'invoices#index'
+  get    'invoices' =>'invoices#index'
+  get    'invoices/:id' =>'invoices#show'
+  post   'invoices/create' => 'invoices#create'
   resources :invoice_posses
-  
-  #map.resources :address
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

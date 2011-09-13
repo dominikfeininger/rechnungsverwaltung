@@ -1,13 +1,13 @@
 class InvoicesController < ApplicationController
-  def index
+  def index #index.html.erb
     @invoices = Invoice.all
   end
 
-  def new
+  def new #new.html.erb
     @invoice = Invoice.new
   end
 
-  def create
+  def create #show.html.erb
     @invoice = Invoice.new({:invoicenr => params[:invoicenr], :customer_id => params[:customer_id]})
     if ( @invoice.invoicenr != Invoice.find_by_invoicenr(params[:invoicenr]))
       respond_to do |format|
@@ -17,13 +17,15 @@ class InvoicesController < ApplicationController
           format.html { render :action => "new" }
         end
       end
-    else
     end
   end
+  
+  def show #show.html.erb
+    @invoice = Invoice.find(params[:id])
+  end
 
-  def custshow
-    v = params[:customerid]
-    @invoice = Invoice.find_by_customer_id(v)
+  def custshow #custshow.html.erb
+    @customer = Customer.find_by_id(params[:id])
   end
 
   def destroy

@@ -23,7 +23,8 @@
 		<td><%= a.plz %></td>
 		<td><%= a.street %></td>
 		<td><%= link_to 'Details', c %></td>
-		<td><%= link_to 'Rechnungen', show_customer_invoice_path(c.id) %></td>
+<!-- 		<%#puts "################## #{c.id}"%> -->
+		<td><%= link_to 'Rechnungen', show_customer_invoice_path(:id => c.id) %></td>
 	</tr>
 	<% end %>
 	<% end %>
