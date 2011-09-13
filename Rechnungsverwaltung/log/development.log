@@ -71236,3 +71236,644 @@ Started GET "/invoices/46" for 127.0.0.1 at 2011-09-07 16:51:29 +0200
 Rendered invoice_posses/_newinvoicepos.html.erb (2.0ms)
 Rendered invoices/show.html.erb within layouts/application (86.0ms)
 Completed 200 OK in 128ms (Views: 95.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-09-13 09:36:54 +0200
+  [1m[36mSQL (1.0ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.0ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.0ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (1.0ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.0ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (1.0ms)[0m  SHOW TIME ZONE
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 13ms (Views: 13.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:39:58 +0200
+  Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (92.0ms)[0m  [1mSELECT "customers".* FROM "customers"[0m
+  [1m[35mSQL (80.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (26.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered customers/index.html.erb within layouts/application (288.0ms)
+Completed   in 644ms
+
+ActionView::Template::Error (undefined method `show_customer_invoice_path' for #<#<Class:0x2846e08>:0x2841570>):
+    23: 		<td><%= a.plz %></td>
+    24: 		<td><%= a.street %></td>
+    25: 		<td><%= link_to 'Details', c %></td>
+    26: 		<td><%= link_to 'Rechnungen', show_customer_invoice_path(c.id) %></td>
+    27: 	</tr>
+    28: 	<% end %>
+    29: 	<% end %>
+  app/views/customers/index.html.erb:26:in `block (2 levels) in _app_views_customers_index_html_erb___277815306_21100956__798079659'
+  app/views/customers/index.html.erb:15:in `block in _app_views_customers_index_html_erb___277815306_21100956__798079659'
+  app/views/customers/index.html.erb:13:in `each'
+  app/views/customers/index.html.erb:13:in `_app_views_customers_index_html_erb___277815306_21100956__798079659'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:45:03 +0200
+  Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (0.0ms)[0m  [1mSELECT "customers".* FROM "customers"[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered customers/index.html.erb within layouts/application (58.0ms)
+Completed   in 84ms
+
+ActionView::Template::Error (undefined method `show_customer_invoice_path' for #<#<Class:0x33ad2e0>:0x33aa250>):
+    23: 		<td><%= a.plz %></td>
+    24: 		<td><%= a.street %></td>
+    25: 		<td><%= link_to 'Details', c %></td>
+    26: 		<td><%= link_to 'Rechnungen', show_customer_invoice_path(c.id) %></td>
+    27: 	</tr>
+    28: 	<% end %>
+    29: 	<% end %>
+  app/views/customers/index.html.erb:26:in `block (2 levels) in _app_views_customers_index_html_erb___277815306_27081552__798079659'
+  app/views/customers/index.html.erb:15:in `block in _app_views_customers_index_html_erb___277815306_27081552__798079659'
+  app/views/customers/index.html.erb:13:in `each'
+  app/views/customers/index.html.erb:13:in `_app_views_customers_index_html_erb___277815306_27081552__798079659'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:49:05 +0200
+  Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (1.0ms)[0m  [1mSELECT "customers".* FROM "customers"[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)[0m
+Rendered customers/index.html.erb within layouts/application (54.0ms)
+Completed 200 OK in 91ms (Views: 63.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/customers/12" for 127.0.0.1 at 2011-09-13 09:49:07 +0200
+  Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mSQL (131.0ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (3.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mCustomer Load (1.0ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."id" = 12 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)[0m
+Rendered customers/show.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 254ms (Views: 68.0ms | ActiveRecord: 136.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:49:09 +0200
+  Processing by CustomersController#index as HTML
+  [1m[35mCustomer Load (0.0ms)[0m  SELECT "customers".* FROM "customers"
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mAddress Load (1.0ms)[0m  SELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mAddress Load (1.0ms)[0m  SELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)
+Rendered customers/index.html.erb within layouts/application (65.0ms)
+Completed 200 OK in 92ms (Views: 73.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/invoice/create.12" for 127.0.0.1 at 2011-09-13 09:49:10 +0200
+
+ActionController::RoutingError (No route matches "/invoice/create.12"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2011-09-13 09:49:34 +0200
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 32ms (Views: 31.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/invoices" for 127.0.0.1 at 2011-09-13 09:49:35 +0200
+  Processing by InvoicesController#index as HTML
+  [1m[36mInvoice Load (1.0ms)[0m  [1mSELECT "invoices".* FROM "invoices"[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"invoices"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mCustomer Load (1.0ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."id" = 11 LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "customers".* FROM "customers" WHERE "customers"."id" = 11 LIMIT 1
+Rendered invoices/index.html.erb within layouts/application (65.0ms)
+Completed 200 OK in 87ms (Views: 72.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/invoices/62" for 127.0.0.1 at 2011-09-13 09:49:40 +0200
+  Processing by InvoicesController#show as HTML
+  Parameters: {"id"=>"62"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+Rendered invoices/show.html.erb within layouts/application (27.0ms)
+Completed   in 37ms
+
+ActionView::Template::Error (undefined method `customer' for nil:NilClass):
+    1: <% @customer = Customer.new %>
+    2: <% @customer = @invoices.customer %>
+    3: <% @invoiceposses = InvoicePoss.find_all_by_invoice_id(@invoice.id) %>
+    4: <p>
+    5: 	<b>Rechnungsnummer:</b>
+  app/views/invoices/show.html.erb:2:in `_app_views_invoices_show_html_erb___600479315_34302396__798079659'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.0ms)
+
+
+Started GET "/invoices/new" for 127.0.0.1 at 2011-09-13 09:49:43 +0200
+  Processing by InvoicesController#new as HTML
+  [1m[35mSQL (0.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"invoices"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mCustomer Load (1.0ms)[0m  [1mSELECT "customers".* FROM "customers" ORDER BY companyname[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered invoices/_newinvoice.html.erb (51.0ms)
+Rendered invoices/new.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 82ms (Views: 65.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2011-09-13 09:49:57 +0200
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:49:57 +0200
+  Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (1.0ms)[0m  [1mSELECT "customers".* FROM "customers"[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (1.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (1.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)[0m
+Rendered customers/index.html.erb within layouts/application (54.0ms)
+Completed 200 OK in 79ms (Views: 61.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/invoice/create.12" for 127.0.0.1 at 2011-09-13 09:49:59 +0200
+
+ActionController::RoutingError (No route matches "/invoice/create.12"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/invoice/create.12" for 127.0.0.1 at 2011-09-13 09:50:15 +0200
+
+ActionController::RoutingError (No route matches "/invoice/create.12"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/invoice/create.12" for 127.0.0.1 at 2011-09-13 09:50:20 +0200
+
+ActionController::RoutingError (No route matches "/invoice/create.12"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/invoice/create.12" for 127.0.0.1 at 2011-09-13 09:50:42 +0200
+
+ActionController::RoutingError (No route matches "/invoice/create.12"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/invoice/create.12" for 127.0.0.1 at 2011-09-13 09:50:52 +0200
+
+ActionController::RoutingError (No route matches "/invoice/create.12"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/invoice/create.12" for 127.0.0.1 at 2011-09-13 09:51:16 +0200
+
+ActionController::RoutingError (No route matches "/invoice/create.12"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:51:57 +0200
+  Processing by CustomersController#index as HTML
+  [1m[35mCustomer Load (1.0ms)[0m  SELECT "customers".* FROM "customers"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mAddress Load (0.0ms)[0m  SELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mAddress Load (1.0ms)[0m  SELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)
+Rendered customers/index.html.erb within layouts/application (58.0ms)
+Completed 200 OK in 81ms (Views: 67.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/invoice/custshow.12" for 127.0.0.1 at 2011-09-13 09:51:58 +0200
+  Processing by InvoicesController#custshow as 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"invoices"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"invoices"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mInvoice Load (1.0ms)[0m  [1mSELECT "invoices".* FROM "invoices" WHERE "invoices"."customer_id" IS NULL LIMIT 1[0m
+Rendered invoices/custshow.html.erb within layouts/application (0.0ms)
+Completed   in 80ms
+
+ActionView::Template::Error (undefined method `customer' for nil:NilClass):
+    1: <% @customer = @invoice.customer %>
+    2: <p>
+    3: 	<b>Rechnungsnummer:</b>
+    4: 	<%= @invoice.invoicenr %>
+  app/views/invoices/custshow.html.erb:1:in `_app_views_invoices_custshow_html_erb__713947823_36284748__798079659'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.0ms)
+
+
+Started GET "/invoice/custshow.12" for 127.0.0.1 at 2011-09-13 09:54:28 +0200
+  Processing by InvoicesController#custshow as 
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"invoices"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"invoices"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mInvoice Load (1.0ms)[0m  SELECT "invoices".* FROM "invoices" WHERE "invoices"."customer_id" IS NULL LIMIT 1
+Rendered invoices/custshow.html.erb within layouts/application (1.0ms)
+Completed   in 75ms
+
+ActionView::Template::Error (undefined method `customer' for nil:NilClass):
+    1: <% @customer = @invoice.customer %>
+    2: <p>
+    3: 	<b>Rechnungsnummer:</b>
+    4: 	<%= @invoice.invoicenr %>
+  app/views/invoices/custshow.html.erb:1:in `_app_views_invoices_custshow_html_erb__713947823_54738600__798079659'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:54:31 +0200
+  Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (0.0ms)[0m  [1mSELECT "customers".* FROM "customers"[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (1.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)[0m
+Rendered customers/index.html.erb within layouts/application (66.0ms)
+Completed 200 OK in 95ms (Views: 75.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/customers/12" for 127.0.0.1 at 2011-09-13 09:54:32 +0200
+  Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mCustomer Load (1.0ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = 12 LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mAddress Load (1.0ms)[0m  SELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)
+Rendered customers/show.html.erb within layouts/application (56.0ms)
+Completed 200 OK in 101ms (Views: 65.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:54:33 +0200
+  Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (1.0ms)[0m  [1mSELECT "customers".* FROM "customers"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (1.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)[0m
+Rendered customers/index.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 84ms (Views: 66.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/customers/12" for 127.0.0.1 at 2011-09-13 09:55:00 +0200
+  Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mCustomer Load (0.0ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = 12 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mAddress Load (0.0ms)[0m  SELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)
+Rendered customers/show.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 90ms (Views: 68.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:55:01 +0200
+  Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (1.0ms)[0m  [1mSELECT "customers".* FROM "customers"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)[0m
+Rendered customers/index.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 79ms (Views: 66.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/invoice/custshow.12" for 127.0.0.1 at 2011-09-13 09:55:02 +0200
+  Processing by InvoicesController#custshow as 
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"invoices"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"invoices"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mInvoice Load (0.0ms)[0m  SELECT "invoices".* FROM "invoices" WHERE "invoices"."customer_id" IS NULL LIMIT 1
+Rendered invoices/custshow.html.erb within layouts/application (0.0ms)
+Completed   in 76ms
+
+ActionView::Template::Error (undefined method `customer' for nil:NilClass):
+    1: <% @customer = @invoice.customer %>
+    2: <p>
+    3: 	<b>Rechnungsnummer:</b>
+    4: 	<%= @invoice.invoicenr %>
+  app/views/invoices/custshow.html.erb:1:in `_app_views_invoices_custshow_html_erb__713947823_54540384__798079659'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.0ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2011-09-13 09:55:07 +0200
+  Processing by CustomersController#index as HTML
+  [1m[36mCustomer Load (1.0ms)[0m  [1mSELECT "customers".* FROM "customers"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (1.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 11)[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"addresses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mAddress Load (0.0ms)[0m  [1mSELECT "addresses".* FROM "addresses" WHERE ("addresses".customer_id = 12)[0m
+Rendered customers/index.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 77ms (Views: 64.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2011-09-13 09:55:09 +0200
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 15ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/invoices" for 127.0.0.1 at 2011-09-13 09:55:10 +0200
+  Processing by InvoicesController#index as HTML
+  [1m[35mInvoice Load (1.0ms)[0m  SELECT "invoices".* FROM "invoices"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"invoices"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mCustomer Load (0.0ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = 11 LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "customers".* FROM "customers" WHERE "customers"."id" = 11 LIMIT 1[0m
+Rendered invoices/index.html.erb within layouts/application (81.0ms)
+Completed 200 OK in 109ms (Views: 94.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/invoices/63" for 127.0.0.1 at 2011-09-13 09:55:12 +0200
+  Processing by InvoicesController#show as HTML
+  Parameters: {"id"=>"63"}
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"customers"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+Rendered invoices/show.html.erb within layouts/application (32.0ms)
+Completed   in 48ms
+
+ActionView::Template::Error (undefined method `customer' for nil:NilClass):
+    1: <% @customer = Customer.new %>
+    2: <% @customer = @invoices.customer %>
+    3: <% @invoiceposses = InvoicePoss.find_all_by_invoice_id(@invoice.id) %>
+    4: <p>
+    5: 	<b>Rechnungsnummer:</b>
+  app/views/invoices/show.html.erb:2:in `_app_views_invoices_show_html_erb___600479315_54370200__798079659'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (13.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (23.0ms)

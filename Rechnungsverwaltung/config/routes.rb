@@ -4,6 +4,7 @@ Rechnungsverwaltung::Application.routes.draw do
 
   post  'invoice_posses/create' => 'invoice_posses#create', :as => :create_invoices_posses
   post  'invoice/create' => 'invoices#create', :as => :create_invoices
+  match  'invoice/custshow' => 'invoices#custshow', :as => :show_customer_invoice
   #get   'invoices/:id' => 'invoices#show', :as => :show_invoice_id_get
   #post  'invoices/:id' => 'invoices#show', :as => :show_invoice_id_post
 
