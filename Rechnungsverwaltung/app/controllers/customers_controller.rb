@@ -26,8 +26,9 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
-  def destroy
+  def destroy #destroy.html.erb
     @customer = Customer.find(params[:id])
     @customer.destroy
+    redirect_to( :action => :index)
   end
 end

@@ -33,5 +33,7 @@
 	zum implementieren, loescht nur die adresse nicht den Kunden -->
 <!-- <%#= link_to 'loeschen', a, :confirm => 'sicher?', :method => :delete %> -->
 <br>
-<%end%>
+
 <%= link_to 'Zurueck', customers_path() %> 
+<%= link_to 'Loeschen', @customer, :confirm => 'Sind Sie sicher?', :method => :delete %>
+<%end%>
