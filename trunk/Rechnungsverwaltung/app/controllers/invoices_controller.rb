@@ -31,5 +31,6 @@ class InvoicesController < ApplicationController
   def destroy
     @invoice = Invoice.find(params[:id])
     @invoice.destroy
+    redirect_to( :action => :index)
   end
 end

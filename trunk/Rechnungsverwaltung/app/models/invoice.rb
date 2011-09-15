@@ -4,7 +4,7 @@ class Invoice < ActiveRecord::Base
   validates :customer_id, :presence =>true
   belongs_to :customer
   
-  has_many :invoice_posses
+  has_many :invoice_posses,  :dependent => :destroy
 
 end
   

@@ -1,0 +1,18 @@
+<%= form_tag(new_address_path()) do |a| %>
+<div class="field">
+	<%= label_tag :Ort %>
+	<br />
+	<%= text_field_tag :city %>
+</div>
+<div class="field">
+	<%= label_tag :PLZ %>
+	<br />
+	<%= text_field_tag :plz %>
+</div>
+<div class="field">
+	<%= label_tag :Strasse %>
+	<br />
+	<%= text_field_tag :street %>
+</div>
+<% end %> 
+<%= link_to 'Zurueck', customers_path() %>
