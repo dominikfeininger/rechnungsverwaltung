@@ -6,22 +6,24 @@ Rechnungsverwaltung::Application.routes.draw do
   post   'invoices/create' => 'invoices#create', :as => :create_invoices
   match  'invoices/custshow/:id' => 'invoices#custshow', :as => :show_customer_invoice
   match  'customers/show' => 'customers#show'
+  match  'invoices/showpdf' => 'invoices#showpdf', :as => :invoices_showpdf
   #get    'customers/' => 'customers#index'
   #get    'invoices/:id' => 'invoices#custshow', :as => :show_customer_invoice
   
   
   #default routes as lower priority
   resources :addresses
+  #get  'customers' => 'customers#index'
+  #get  'customers/show' => 'customers#show'
+  #get  'customers/:id' => 'customers#show'
+  #match 'customers/new' => 'customers#show'
   resources :customers
-  get  'customers' => 'customers#index'
-  get  'customers/show' => 'customers#show'
-  get  'customers/:id' => 'customers#show'
-  resources :invoices
   get    'invoices/new' => 'invoices#new'
   get    'invoices/index' =>'invoices#index'
   get    'invoices' =>'invoices#index'
   get    'invoices/:id' =>'invoices#show'
   post   'invoices/create' => 'invoices#create'
+  resources :invoices
   resources :invoice_posses
 
 

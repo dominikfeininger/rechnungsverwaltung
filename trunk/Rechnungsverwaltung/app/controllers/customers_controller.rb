@@ -1,32 +1,29 @@
 class CustomersController < ApplicationController
-  def index
+  def index #index.html.erb
     @customers = Customer.all
   end
 
-  def new
+  def new #new.html.erb
     @customer = Customer.new
   end
 
-  def create
+  def create 
     @customer = Customer.new(params[:customer])
     
     @address = Address.create(params[:address])
     @customer.addresses << @address
-
-    respond_to do |format|
       if @customer.save
-        format.html { redirect_to(@customer, :notice => 'Kunde erstellt') }
+         redirect_to(@customer, :notice => 'Kunde erstellt') 
       else
-        format.html { render :action => "new" }
+        render :action => "new" 
       end
-    end
   end
 
-  def show
+  def show #show.html.erb
     @customer = Customer.find(params[:id])
   end
 
-  def destroy #destroy.html.erb
+  def destroy 
     @customer = Customer.find(params[:id])
     @customer.destroy
     redirect_to( :action => :index)
