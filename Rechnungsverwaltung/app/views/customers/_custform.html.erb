@@ -1,26 +1,45 @@
-<%= form_tag(customers_show_path()) do |c| %>
-<div>
-	<%= label_tag :Vorname %>
+<%= form_for(@customer) do |c| %>
+<% @address = Address.new %>
+<%= form_for(@address) do |a| %>
+
+<div class="field">
+	<%= c.label :Vorname %>
 	<br />
-	<%= text_field_tag :firstname %>
+	<%= c.text_field :firstname %>
 </div>
-<div>
-	<%= label_tag :Nachname %>
+<div class="field">
+	<%= c.label :Nachname %>
 	<br />
-	<%= text_field_tag :lastname %>
+	<%= c.text_field :lastname %>
 </div>
-<div>
-	<%= label_tag :Firmenname %>
+<div class="field">
+	<%= c.label :Firmenname %>
 	<br />
-	<%= text_field_tag :companyname %>
+	<%= c.text_field :companyname %>
 </div>
-<div>
-	<%= label_tag :Emailadresse %>
+<div class="field">
+	<%= c.label :Emailadresse %>
 	<br />
-	<%= email_field_tag :email %>
+	<%= c.text_field :email %>
 </div>
-<div>
-<%= submit_tag "Rechnung anlegen" %>
+<div class="field">
+	<%= a.label :Ort %>
+	<br />
+	<%= a.text_field :city %>
+</div>
+<div class="field">
+	<%= a.label :PLZ %>
+	<br />
+	<%= a.text_field :plz %>
+</div>
+<div class="field">
+	<%= a.label :Strasse %>
+	<br />
+	<%= a.text_field :street %>
+</div>
+<div class="actions">
+	<%= c.submit "Kunde anlegen"%>
 </div>
 <% end %>
-<% render 'addresses/addressform'%>
+<% end %> 
+<%= link_to 'Zurueck', customers_path() %>
