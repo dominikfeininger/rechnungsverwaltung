@@ -36,14 +36,14 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find_by_id(params[:id])
     @customer = Customer.find_by_id(@invoice.customer_id)   
     @address = Address.find_by_customer_id(@customer.id)
-    @invoice_posses = InvoicePoss.find_by_invoice_id(@invoice.id)
+    @invoice_posses = InvoicePoss.find_all_by_invoice_id(@invoice.id)
      
     require 'prawn'
     #A4, potrait, margin(top, left&right, bottom)
-      pdf = Prawn::Document.new(:page_size => "A4", :page_layout => :portrait, :margin => [20,100,20])
+      pdf = Prawn::Document.new(:page_size => "A4", :page_layout => :portrait, :margin => [20,50,20])
       
       #customer address
-      pdf.bounding_box([20,700], :width => 150, :height => 150) do
+      pdf.bounding_box([0,750], :width => 150, :height => 150) do
         pdf.text "#{@customer.firstname}"
         pdf.text "#{@customer.lastname}"
         pdf.text "#{@customer.companyname}"
@@ -54,8 +54,7 @@ class InvoicesController < ApplicationController
       
       
       #delphit address
-      pdf.polygon [0,250], [300,700], [150,150]
-      pdf.bounding_box([300,700], :width => 150, :height => 150) do
+      pdf.bounding_box([300,750], :width => 150, :height => 150) do
         pdf.text "Martin"
         pdf.text "Kolb"
         pdf.text "delphit Gmbh"
@@ -65,31 +64,21 @@ class InvoicesController < ApplicationController
       end
       
       #invoice data
-      pdf.bounding_box([20,500], :width => 200, :height => 50) do
+      pdf.bounding_box([0,500], :width => 200, :height => 50) do
         pdf.text "Rechnungsnummer:"
         pdf.text "#{@invoice.invoicenr}"
       end
-      
-      #invoice positions data
-      # pdf.table(data) do |table|
-        # table.row_length(5)
-        # table.column_length(5)
-      # end
-      
-      pdf.bounding_box([200,200], :width => 600, :height => 600) do
-        pdf.text "Positionsnummer: "
-        pdf.text "Beschreibung: "
-        pdf.text "Menge: "
-        pdf.text "Stueckpreis: "
-        pdf.text "Total: "
-        
-        pdf.text "#{@invoice_posses.invoiceposnr}"
-        pdf.text "#{@invoice_posses.description}"
-        pdf.text "#{@invoice_posses.qty}"
-        pdf.text "#{@invoice_posses.unitprice}"
-        pdf.text "#{@invoice_posses.total}"
+
+      #invoice positions header 
+      pdf.table([['Positionsnummer:', 'Beschreibung:', 'Menge:', 'Stueckpreis:', 'Total:']])
+              
+      #invoice positions data   
+      @invoice_posses.each do |ip|
+        pdf.table([["#{ip.invoiceposnr}", "#{ip.description}", "#{ip.qty}","#{ip.unitprice}", "#{ip.total}"]]) do
+          columns(1..3).height = 20
+          rows(1..3).width = 72
+        end
       end
-      
       
       pdf.render_file "./pdf/invoice.pdf"
 
