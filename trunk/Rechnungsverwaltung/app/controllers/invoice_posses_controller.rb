@@ -14,6 +14,17 @@ class InvoicePossesController < ApplicationController
     x.times  do |i|
       #get the current pos in the iparams val 
       iparams = params["pos#{i}"]
+      #puts "###################### #{iparams.has_key?("qty")}"
+      
+      if iparams.has_key?("qty") and iparams.has_key?("unitprice") and iparams.has_key?("total")
+        #puts "####################### #{iparams}"
+        posqty = iparams["qty"]
+        posprice = iparams["unitprice"]
+        postotal = posqty.to_i * posprice.to_i
+        iparams["total"] = postotal
+        #puts "####################### #{postotal}"
+      end
+      
       #search for pos_id
       if iparams.has_key?(:position_id)
         #already exists
