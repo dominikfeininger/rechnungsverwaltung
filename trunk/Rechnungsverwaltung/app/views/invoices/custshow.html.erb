@@ -12,8 +12,9 @@
 <% @filepaths.each do |fp| %>
 <p>
 	<b>Rechnung (PDF):</b>
-	<%= link_to 'Druckbare Rechnung (PDF)', invoices_showpdf_path(:id => i.id) %>
+	<%= link_to 'Druckbare Rechnung (PDF)', invoices_downloadpdf_path(:id => fp.id) %>
 </p>
+<%= hidden_field_tag(:save, 0 )%>
 <%end%>
 <%end%>
 <br/>
