@@ -9,11 +9,12 @@
 	<%= @customer.companyname %>
 </p>
 <%= render 'invoice_posses/newinvoicepos' %>
+<%= render 'pdfoptions' %>
 <br/>
-<br/>
-<br/>
+
+
 <%= link_to 'Zurueck', invoices_path() %> 
-<%= link_to 'Druckbare Rechnung (PDF)', invoices_showpdf_path(:id => @invoice.id) %>
+<!-- <%#= link_to 'Druckbare Rechnung (PDF)', invoices_showpdf_path(:id => @invoice.id) %> -->
 <%= link_to 'Loeschen', @invoice, :confirm => 'Sind Sie sicher?', :method => :delete %>
 
 

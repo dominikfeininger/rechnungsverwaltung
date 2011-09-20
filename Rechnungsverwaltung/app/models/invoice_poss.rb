@@ -7,4 +7,5 @@ class InvoicePoss < ActiveRecord::Base
   validates :unitprice, :presence => true
 
   belongs_to :invoice
+
 end

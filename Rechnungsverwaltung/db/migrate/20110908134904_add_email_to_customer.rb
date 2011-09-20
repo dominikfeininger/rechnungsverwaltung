@@ -4,6 +4,6 @@ class AddEmailToCustomer < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :customer, email
+    remove_column :customer, :email
   end
 end
