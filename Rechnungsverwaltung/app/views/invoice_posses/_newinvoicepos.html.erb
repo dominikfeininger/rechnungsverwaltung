@@ -1,8 +1,10 @@
 <!-- form to create and edit invoice pos, linkt to create-->
+<br/>
+<br/>
+
 <%= form_tag(create_invoices_posses_path()) do %>
 <% i = 0%>
-<br/>
-<br/>
+
 <table>
 	<!-- new row - existing invoicepos object -->
 	<% @invoiceposses.each do |ip| %>
@@ -11,7 +13,7 @@
 		<td> <%= label_tag(:description, "Positionsbescheibung") %> </td>
 		<td> <%= label_tag(:qty, "Menge") %> </td>
 		<td> <%= label_tag(:unitprice, "Preis") %> </td>
-		<td> <%= label_tag(:total, "Gesamt") %> </td>
+		<td> <%= label_tag(:total, "Gesamt (wird errechnet)") %> </td>
 	</tr>
 	<tr>
 		<%= hidden_field_tag("pos#{i}[invoice_id]", @invoice.id) %>
@@ -31,7 +33,7 @@
 		<td> <%= label_tag(:description, "Positionsbescheibung") %> </td>
 		<td> <%= label_tag(:qty, "Menge") %> </td>
 		<td> <%= label_tag(:unitprice, "Preis") %> </td>
-		<td> <%= label_tag(:total, "Gesamt") %> </td>
+		<td> <%= label_tag(:total, "Gesamt (wird errechnet)") %> </td>
 	</tr>
 	<tr>
 		<%= hidden_field_tag("pos#{i}[invoice_id]", @invoice.id) %> 
