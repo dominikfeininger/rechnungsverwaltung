@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110908134904) do
+ActiveRecord::Schema.define(:version => 20110920140002) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20110908134904) do
     t.string   "email"
   end
 
+  create_table "file_paths", :force => true do |t|
+    t.string   "path"
+    t.integer  "invoice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "invoice_posses", :force => true do |t|
     t.string   "invoiceposnr"
     t.text     "description"
@@ -49,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20110908134904) do
     t.integer  "invoice_posses_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "filepath"
   end
 
 end
