@@ -34,7 +34,8 @@ class InvoicesController < ApplicationController
   
   
 ###########################################################################################################################
-  def showpdf
+  def savepdf
+    save = params[:save].to_i
     unitprice = params[:unitprice]
     logo = params[:logo]
     address = params[:address]
@@ -164,7 +165,9 @@ class InvoicesController < ApplicationController
        pdf.text "Ust-IdNr: DE274536868", :size => size
      end 
      end
-              
+         
+    if save == 1  
+                     
     #create file and file path
     foldername = Date.today.to_s
     foldername = foldername[0,7]
@@ -174,6 +177,7 @@ class InvoicesController < ApplicationController
     
     @fp = "./invoices/#{foldername}/"
         
+
      if File.directory?(@fp)   
          pdf.render_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"    
         sendsave()
@@ -184,7 +188,10 @@ class InvoicesController < ApplicationController
               pdf.render_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"
         sendsave()         
         
-     end    
+     end  
+     else
+        #pdf.render_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"
+     end 
   end
   
   def sendsave           
@@ -193,6 +200,13 @@ class InvoicesController < ApplicationController
       @filepath.path = "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"
       @filepath.invoice_id = @invoice.id
       @filepath.save
+  end
+  
+  
+   def download
+    filepathid = params[:id]
+    @filepath = FilePath.find_by_id(filepathid)
+    send_file "#{@filepath.path}", :type=>"application/pdf" 
   end
  
 end

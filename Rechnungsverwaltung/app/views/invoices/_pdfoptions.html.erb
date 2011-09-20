@@ -1,6 +1,6 @@
 <!-- print options -->
 
-<%= form_tag(invoices_showpdf_path(:id => @invoice.id)) do %>
+<%= form_tag(invoices_savepdf_path(:id => @invoice.id)) do %>
 
 <b> Druckoptionen:</b>
 <p>
@@ -9,6 +9,7 @@
 	Unterschrift anzeigen? <%= check_box_tag(:signature, value ="1", checked = true)%><br/>
 	Fusszeile anzeigen? <%= check_box_tag(:footer, value ="1", checked = true)%><br/>
 	Einzelpreis anzeigen? <%= check_box_tag(:unitprice, value ="1", checked = true)%><br/>
+	<%= hidden_field_tag(:save, 1 )%>
 </p>
 <%= submit_tag ("Druckbare Rechnung (PDF)")%>
 <%end%>
