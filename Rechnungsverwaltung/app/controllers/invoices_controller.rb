@@ -232,7 +232,7 @@ class InvoicesController < ApplicationController
            pdf.render_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"
            sendsave()           
         end 
-        not save 
+        #not save 
       else
         #pdf.render_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"
       end 
@@ -466,11 +466,11 @@ class InvoicesController < ApplicationController
   end
   
   def sendsave           
-      send_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf ", :type => "application/pdf"
       @filepath = FilePath.new
       @filepath.path = "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"
       @filepath.invoice_id = @invoice.id
       @filepath.save
+      send_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf ", :type => "application/pdf"
   end
   
   
