@@ -1,22 +1,18 @@
-<%= form_tag(customers_path()) do %>
+
 <div>
 	<%= label_tag :Ort %>
 	<br />
-	<%= text_field_tag :city %>
+	<%= text_field_tag "add[city]", @address.city %>
 </div>
 <div>
 	<%= label_tag :PLZ %>
 	<br />
-	<%= text_field_tag :plz %>
+	<%= text_field_tag "add[plz]", @address.plz %>
 </div>
 <div>
 	<%= label_tag :Strasse %>
 	<br />
-	<%= text_field_tag :street %>
+	<%= text_field_tag "add[street]", @address.street %>
 </div>
 <br/>
-<div>
-	<%= submit_tag "Kunde anlegen" %>
-</div>
-<% end %>
-<%= link_to 'Zurueck', customers_path() %>
+

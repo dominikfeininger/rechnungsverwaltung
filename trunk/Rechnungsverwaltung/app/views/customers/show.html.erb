@@ -14,8 +14,8 @@
 	<b>Emailadresse:</b>
 	<%= @customer.email %>
 </p>
-<% @address = Address.new %>
-<% @addresses = @customer.addresses %>
+<!-- <%# @address = Address.new %> -->
+<% @addresses = Address.find_all_by_customer_id(@customer.id)%>
 <% @addresses.each do |a| %>
 <p>
 	<b>Ort:</b>
@@ -29,11 +29,34 @@
 	<b>Strasse:</b>
 	<%= a.street %>
 </p>
+<% @customerattribute = CustomerAttribute.find_all_by_customer_id(@customer.id)%>
+<% @customerattribute.each do |ca| %>
+<p>
+	<b>delphit logo anzeigen</b>
+	<%= ca.logo %>
+</p>
+<p>
+	<b>delphit adresse anzeigen</b>
+	<%= ca.address %>
+</p>
+<p>
+	<b>Unterschrift anzeigen</b>
+	<%= ca.signature %>
+</p>
+<p>
+	<b>Fusszeile anzeigen</b>
+	<%= ca.footer %>
+</p>
+<p>
+	<b>Einzelpreis anzeigen</b>
+	<%= ca.unitprice %>
+</p>
 <!-- TO DO
 	zum implementieren, loescht nur die adresse nicht den Kunden -->
 <!-- <%#= link_to 'loeschen', a, :confirm => 'sicher?', :method => :delete %> -->
 <br>
-
+<%end%>
 <%= link_to 'Zurueck', customers_path() %> 
 <%= link_to 'Loeschen', @customer, :confirm => 'Sind Sie sicher?', :method => :delete %>
+<%= link_to 'Bearbeiten', customerupdate_path(:id => @customer.id) %>
 <%end%>

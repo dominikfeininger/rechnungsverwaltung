@@ -3,7 +3,7 @@
 
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: rechnungsverwaltung
   pool: 5
   username: postgres

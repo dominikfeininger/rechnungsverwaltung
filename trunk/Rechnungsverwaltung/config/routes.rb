@@ -8,6 +8,7 @@ Rechnungsverwaltung::Application.routes.draw do
   match  'customers/show' => 'customers#show'
   match  'invoices/savepdf' => 'invoices#savepdf', :as => :invoices_savepdf
   match  'invoices/downloadpdf' => 'invoices#download', :as => :invoices_downloadpdf
+  match  'customers/update' => 'customers#update', :as =>:customerupdate
   #get    'customers/' => 'customers#index'
   #get    'invoices/:id' => 'invoices#custshow', :as => :show_customer_invoice
   

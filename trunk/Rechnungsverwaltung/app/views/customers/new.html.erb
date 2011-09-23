@@ -1,4 +1,13 @@
 <h1>Neuer Kunde</h1>
-
+<% @customer = Customer.new%>
+<% @address = Address.new%>
+<% @customerattribute = CustomerAttribute.new%>
+<%= form_tag(customers_path()) do %>
 <%= render 'custform' %>
-<!-- <%#= render 'addresses/addressform'%> -->
+<div>
+	<%= submit_tag "Kunde anlegen" %>
+</div>
+<%end%>
+
+
+<%= link_to 'Zurück', customers_path() %>
