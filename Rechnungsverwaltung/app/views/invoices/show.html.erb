@@ -9,9 +9,16 @@
 	<%= @customer.companyname %>
 </p>
 <%= render 'invoice_posses/newinvoicepos' %>
-<%= render 'pdfoptions' %>
-<br/>
 
+<%= form_tag(invoices_savepdf_path(:id => @invoice.id)) do %>
+<% @customerattribute = CustomerAttribute.find_by_customer_id(@customer.id)%>
+<b> Druckoptionen:</b><br/>
+
+<%= render 'pdfoptions' %>
+<%= submit_tag ("Druckbare Rechnung (PDF)")%>
+<%end%>
+
+<br/>
 
 <%= link_to 'Zurueck', invoices_path() %> 
 <!-- <%#= link_to 'Druckbare Rechnung (PDF)', invoices_showpdf_path(:id => @invoice.id) %> -->

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920140002) do
+ActiveRecord::Schema.define(:version => 20110923094135) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(:version => 20110920140002) do
     t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "customer_attributes", :force => true do |t|
+    t.string   "logo"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "address"
+    t.string   "signature"
+    t.string   "footer"
+    t.string   "unitprice"
+    t.boolean  "hidden"
   end
 
   create_table "customers", :force => true do |t|
@@ -42,12 +54,13 @@ ActiveRecord::Schema.define(:version => 20110920140002) do
   create_table "invoice_posses", :force => true do |t|
     t.string   "invoiceposnr"
     t.text     "description"
-    t.integer  "qty"
-    t.decimal  "unitprice"
-    t.decimal  "total"
+    t.float    "qty"
+    t.float    "unitprice"
+    t.float    "total"
     t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "mwst"
   end
 
   create_table "invoices", :force => true do |t|

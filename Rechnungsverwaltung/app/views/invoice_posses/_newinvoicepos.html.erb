@@ -14,6 +14,7 @@
 		<td> <%= label_tag(:qty, "Menge") %> </td>
 		<td> <%= label_tag(:unitprice, "Preis") %> </td>
 		<td> <%= label_tag(:total, "Gesamt (wird errechnet)") %> </td>
+		<td> <%= label_tag(:mwst, "Mwst (19%) oder (7%)") %> </td>
 	</tr>
 	<tr>
 		<%= hidden_field_tag("pos#{i}[invoice_id]", @invoice.id) %>
@@ -23,6 +24,7 @@
 		<td> <%= text_field_tag("pos#{i}[qty]", ip.qty) %></td>
 		<td> <%= text_field_tag("pos#{i}[unitprice]", ip.unitprice) %></td>
 		<td> <%= text_field_tag("pos#{i}[total]", ip.total) %></td>
+		<td> <%= text_field_tag("pos#{i}[mwst]", ip.mwst) %></td>
 	</tr>
 	<% i += 1%>
 	<% end %> <b>Rechnungspositionen:</b>
@@ -34,6 +36,7 @@
 		<td> <%= label_tag(:qty, "Menge") %> </td>
 		<td> <%= label_tag(:unitprice, "Preis") %> </td>
 		<td> <%= label_tag(:total, "Gesamt (wird errechnet)") %> </td>
+		<td> <%= label_tag(:mwst, "Mwst (19%) oder (7%)") %> </td>
 	</tr>
 	<tr>
 		<%= hidden_field_tag("pos#{i}[invoice_id]", @invoice.id) %> 
@@ -42,6 +45,7 @@
 		<td> <%= text_field_tag("pos#{i}[qty]") %></td>
 		<td> <%= text_field_tag("pos#{i}[unitprice]") %></td>
 		<td> <%= text_field_tag("pos#{i}[total]") %></td>
+		<td> <%= text_field_tag("pos#{i}[mwst]", 19.00) %></td>
 	</tr>
 </table>
 

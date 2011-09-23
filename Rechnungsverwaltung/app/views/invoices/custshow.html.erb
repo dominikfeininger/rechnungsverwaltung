@@ -9,13 +9,35 @@
 	<b>Rechnungsnummer:</b>
 	<%= i.invoicenr %>
 </p>
+<br/>
+<br/>
+<% if @filepaths.empty? == false%>
+<p>
+	<div style="text-indent:140px;">	<b>Datum # Uhrzeit:</b></div>
+</p>
 <% @filepaths.each do |fp| %>
 <p>
-	<b>Rechnung (PDF):</b>
-	<%= link_to 'Druckbare Rechnung (PDF)', invoices_downloadpdf_path(:id => fp.id) %>
+<!-- 	format filepath -->
+	Rechnung (PDF):
+	<% filepath = fp.path%>
+	<% filep = filepath[28..41]%>
+	<% filepath = filep.insert(4, '.')%>
+	<% filep = filepath.insert(7, '.')%>
+	<% filepath = filep.insert(10, ' # ')%>
+	<% filep = filepath.insert(15, '-')%>
+	<%= filep.insert(18, '-')%>
+	<%= link_to 'download', invoices_downloadpdf_path(:id => fp.id) %>
 </p>
 <%= hidden_field_tag(:save, 0 )%>
 <%end%>
+<br/>
+<br/>
+
+<%else%>
+	Keine gedruckten Rechnungen
+	<br/>
+	<br/>	
+<%end%>
 <%end%>
 <br/>
-<%= link_to 'Zurueck', customers_path() %> 
+<%= link_to 'Zurück', customers_path() %> 

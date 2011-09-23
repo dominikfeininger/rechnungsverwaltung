@@ -1,0 +1,18 @@
+<h1>Kunden bearebeiten</h1>
+
+<% @customer = Customer.find_by_id(params[:id])%>
+<% @address = Address.find_by_customer_id(params[:id])%>
+<% @customerattribute = CustomerAttribute.find_by_customer_id(params[:id])%>
+
+<%= form_tag(customers_path()) do %>
+<%= render 'custform'%>
+<%= hidden_field_tag("cust[id]", @customer.id )%>
+<%= hidden_field_tag("add[id]", @address.id )%>
+<%= hidden_field_tag("custatt[id]", @customerattribute.id )%>
+<div>
+	<%= submit_tag "Kunde ändern" %>
+</div>
+<% end %>
+
+
+<%= link_to 'Zurück', customers_path() %>

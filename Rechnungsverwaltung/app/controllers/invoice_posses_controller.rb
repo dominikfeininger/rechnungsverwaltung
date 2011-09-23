@@ -20,7 +20,7 @@ class InvoicePossesController < ApplicationController
         #puts "####################### #{iparams}"
         posqty = iparams["qty"]
         posprice = iparams["unitprice"]
-        postotal = posqty.to_i * posprice.to_i
+        postotal = posqty.to_d * posprice.to_d
         iparams["total"] = postotal
         #puts "####################### #{postotal}"
       end
