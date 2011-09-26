@@ -1,5 +1,0 @@
-postgresql local
-postgresql2reg
-
-windows
-delphitdom
