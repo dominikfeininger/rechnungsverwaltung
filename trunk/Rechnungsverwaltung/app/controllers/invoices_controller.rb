@@ -222,11 +222,12 @@ class InvoicesController < ApplicationController
           
         #puts "#######################################"
   
-        if File.directory?(@fp)   
+        if File.directory?(@fp)  
+           logger.info "######################################### 1"
            pdf.render_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"    
            sendsave()
         else
-           puts "############################# folder desnt exist"
+           logger.info "######################################### 2"
            #create folder
            Dir.mkdir("#{@fp}")
            pdf.render_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"
@@ -466,11 +467,16 @@ class InvoicesController < ApplicationController
   end
   
   def sendsave           
+      logger.info "######################################### 3"     
       @filepath = FilePath.new
       @filepath.path = "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf"
       @filepath.invoice_id = @invoice.id
       @filepath.save
-      send_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf ", :type => "application/pdf"
+      logger.info "######################################### 4"  
+      send_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf", :type => "application/pdf"  
+      logger.info "######################################### 5"  
+      #download()
+      #send_file "#{@fp}#{@invoice.invoicenr}_#{@timestamp}.pdf", :type => "application/pdf"  
   end
   
   
