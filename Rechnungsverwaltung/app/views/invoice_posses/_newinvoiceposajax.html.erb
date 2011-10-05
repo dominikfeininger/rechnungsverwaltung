@@ -1,0 +1,70 @@
+<!-- form to create and edit invoice pos, linkt to create-->
+<!-- not working, no prototype framework availible -->
+<br/>
+<br/>
+
+<%= form_tag(create_invoices_posses_path()) do %>
+<% i = 0%>
+
+<table>
+	<!-- new row - existing invoicepos object -->
+	<% @invoiceposses.each do |ip| %>
+	<tr>
+		<td> <%= label_tag(:invoiceposnr, "Positionsnummer") %> </td>
+		<td> <%= label_tag(:description, "Positionsbescheibung") %> </td>
+		<td> <%= label_tag(:qty, "Menge") %> </td>
+		<td> <%= label_tag(:unitprice, "Preis") %> </td>
+		<td> <%= label_tag(:total, "Gesamt (wird errechnet)") %> </td>
+		<td> <%= label_tag(:mwst, "Mwst (19%) oder (7%)") %> </td>
+	</tr>
+	<tr>
+		<%= hidden_field_tag("pos#{i}[invoice_id]", @invoice.id) %>
+		<%= hidden_field_tag("pos#{i}[position_id]", ip.id) %> 
+		<td> <%= text_field_tag("pos#{i}[invoiceposnr]", i+1) %></td>
+		<td> <%= text_field_tag("pos#{i}[description]", ip.description) %></td>
+		<td> <%= text_field_tag("pos#{i}[qty]", ip.qty) %></td>
+		<td> <%= text_field_tag("pos#{i}[unitprice]", ip.unitprice) %></td>
+		<td> <%= text_field_tag("pos#{i}[total]", ip.total) %></td>
+		<td> <%= text_field_tag("pos#{i}[mwst]", ip.mwst) %></td>
+	</tr>
+	<% i += 1%>
+	<% end %> <b>Rechnungspositionen:</b>
+	<br/>
+</table>
+
+<%= hidden_field_tag("invoice_id", @invoice.id )%>
+<%= hidden_field_tag("position_count", @invoiceposses.size + 1 )%>
+<!-- ajax -->
+<p id="add_link">
+	<%= link_to_function("neue Rechnungsposition",
+	"Element.show('add_pos')")%>
+</p>
+	<!-- new row - new empty invoicepos object -->
+<div id="add_pos" style="display:none;">
+	<table>
+	<tr>
+		<td> <%= label_tag(:invoiceposnr, "Positionsnummer") %> </td>
+		<td> <%= label_tag(:description, "Positionsbescheibung") %> </td>
+		<td> <%= label_tag(:qty, "Menge") %> </td>
+		<td> <%= label_tag(:unitprice, "Preis") %> </td>
+		<td> <%= label_tag(:total, "Gesamt (wird errechnet)") %> </td>
+		<td> <%= label_tag(:mwst, "Mwst (19%) oder (7%)") %> </td>
+	</tr>
+	<tr>
+		<%= hidden_field_tag("pos#{i}[invoice_id]", @invoice.id) %> 
+		<td> <%= text_field_tag("pos#{i}[invoiceposnr]", i+1) %></td>
+		<td> <%= text_field_tag("pos#{i}[description]") %></td>
+		<td> <%= text_field_tag("pos#{i}[qty]") %></td>
+		<td> <%= text_field_tag("pos#{i}[unitprice]") %></td>
+		<td> <%= text_field_tag("pos#{i}[total]") %></td>
+		<td> <%= text_field_tag("pos#{i}[mwst]", 19.00) %></td>
+	</tr>
+</table>
+<%= submit_tag ("Rechnungsposition anlegen/ändern")%>
+</div>
+<!-- ajax -->
+
+<br />
+<br />
+
+<% end %> 

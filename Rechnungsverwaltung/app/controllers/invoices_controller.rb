@@ -23,10 +23,12 @@ class InvoicesController < ApplicationController
   def new #new.html.erb
     @invoice = Invoice.new
     @nextinvoicenumber = getnextinvoicenumber()
+    #newajax.html.erb
+    #render :file => './app/views/invoices/newajax.html.erb'
   end
 
   def create #show.html.erb
-    @invoice = Invoice.new({:invoicenr => params[:invoicenr], :customer_id => params[:customer_id]})
+    @invoice = Invoice.new({:invoicenr => params[:invoicenr], :customer_id => params[:customer_id], :date => params[:date]})
     if ( @invoice.invoicenr != Invoice.find_by_invoicenr(params[:invoicenr]))
         if @invoice.save
            redirect_to(@invoice, :notice => 'Rechnung erstellt')

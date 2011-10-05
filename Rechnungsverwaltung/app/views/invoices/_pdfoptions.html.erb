@@ -2,7 +2,7 @@
 <!-- <%#= form_tag(invoices_savepdf_path(:id => @invoice.id)) do %> -->
 <!-- <b> Druckoptionen:</b> -->
 <p>
-<!-- 	<%# @customerattribute = CustomerAttributes.find_by_customer_id(@customer.id)%> -->
+<!-- 	<%# @customerattribute = CustomerAttribute.find_by_customer_id(@customer.id)%> -->
 <!-- 	<%# puts "###################### #{@customerattribute}"%> -->
 
 	delphit logo anzeigen? <%= check_box_tag("custatt[logo]", value ="1", checked = @customerattribute.logo)%> <br/>

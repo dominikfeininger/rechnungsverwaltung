@@ -8,6 +8,10 @@
 	<b>Firmenname:</b>
 	<%= @customer.companyname %>
 </p>
+<p>
+	<b>Rechnungsdatum:</b>
+	<%= @invoice.date %>
+</p>
 <%= render 'invoice_posses/newinvoicepos' %>
 
 <%= form_tag(invoices_savepdf_path(:id => @invoice.id)) do %>
@@ -22,6 +26,6 @@
 
 <%= link_to 'Zurueck', invoices_path() %> 
 <!-- <%#= link_to 'Druckbare Rechnung (PDF)', invoices_showpdf_path(:id => @invoice.id) %> -->
-<%= link_to 'Loeschen', @invoice, :confirm => 'Sind Sie sicher?', :method => :delete %>
+<%= link_to 'Löschen', @invoice, :confirm => 'Sind Sie sicher?', :method => :delete %>
 
 

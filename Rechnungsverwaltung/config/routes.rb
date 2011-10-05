@@ -1,6 +1,10 @@
 Rechnungsverwaltung::Application.routes.draw do
   
-  get "home/index"
+  match "home/test-ajax" => 'home#test_ajax'
+  
+  get "home/index" => 'home#index'
+  match "home/jquery" => 'home#jquery'
+  
 
   post   'invoice_posses/create' => 'invoice_posses#create', :as => :create_invoices_posses
   post   'invoices/create' => 'invoices#create', :as => :create_invoices
@@ -9,6 +13,7 @@ Rechnungsverwaltung::Application.routes.draw do
   match  'invoices/savepdf' => 'invoices#savepdf', :as => :invoices_savepdf
   match  'invoices/downloadpdf' => 'invoices#download', :as => :invoices_downloadpdf
   match  'customers/update' => 'customers#update', :as =>:customerupdate
+
   #get    'customers/' => 'customers#index'
   #get    'invoices/:id' => 'invoices#custshow', :as => :show_customer_invoice
   
