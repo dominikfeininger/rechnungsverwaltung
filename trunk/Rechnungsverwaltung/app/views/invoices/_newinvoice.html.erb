@@ -1,10 +1,9 @@
-
 <%= form_tag(create_invoices_path()) do %>
 Rechnungsnummer:
 <br/>
 <%= text_field_tag(:invoicenr, @nextinvoicenumber) %>
 <br/>
-Firma waehlen
+Firma waehlen:
 <br/>
 <select id="customer_id" name="customer_id">
 	<% @cust = Customer.find(:all, :order => "companyname")
@@ -14,6 +13,14 @@ Firma waehlen
 	<% end %>
 </select>
 <br/>
+Rechnungsdataum:
+<br/>
+<input type="text" name="date" id="date" value= "<%=DateTime.now.strftime("%m/%d/%Y") %>" />
+<br/>
 <br/>
 <%= submit_tag "Rechnung anlegen" %>
-<% end %> 
+<% end %>
+<script>
+	$('#date').datepicker();
+
+</script>

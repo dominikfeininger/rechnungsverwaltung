@@ -1,0 +1,45 @@
+<script>
+	$(function() {
+		$("#tabs").tabs();
+	});
+
+</script>
+<div class="new">
+	<div id="tabs">
+		<ul>
+			<li>
+				<a href="#tabs-1">Rechungskopf</a>
+			</li>
+			<li>
+				<a href="#tabs-2">Rechnungspostitionen</a>
+			</li>
+			<li>
+				<a href="#tabs-3">Druckoptionen</a>
+			</li>
+		</ul>
+		<div id="tabs-1">
+			<%= render 'newinvoice'%>
+		</div>
+		<div id="tabs-2">
+			<%= render 'showajax' %>
+		</div>
+		<div id="tabs-3">
+			<!-- 			<%# @customerattribute = CustomerAttribute.find_by_customer_id(@customer.id)%> -->
+			<%= render 'pdfoptions'%>
+		</div>
+	</div>
+</div>
+<!-- End demo -->
+<div style="display: none;" class="demo-description">
+	<p>
+		Click tabs to swap between content that is broken into logical sections.
+	</p>
+</div>
+<!-- End demo-description -->
+<style>
+	#demo-frame > div.demo {
+		padding: 10px !important;
+	}
+</style>
+<br>
+<%= link_to 'Zurueck', invoices_path() %> 

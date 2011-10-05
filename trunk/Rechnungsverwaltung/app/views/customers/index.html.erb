@@ -8,7 +8,6 @@
 		<th>Ort</th>
 		<th>PLZ</th>
 		<th>Strasse</th>
-
 		<th></th>
 		<th></th>
 	</tr>
@@ -26,7 +25,7 @@
 		<td><%= a.plz %></td>
 		<td><%= a.street %></td>
 		<td><%= link_to 'Details', c %></td>
-<!-- 		<%#puts "################## #{c.id}"%> -->
+		<!-- 		<%#puts "################## #{c.id}"%> -->
 		<td><%= link_to 'Rechnungen', show_customer_invoice_path(:id => c.id) %></td>
 	</tr>
 	<% end %>
@@ -34,4 +33,5 @@
 </table>
 <br />
 <%= link_to 'neuen Kunden anlegen', new_customer_path() %>
-<%= link_to 'Zurueck', home_index_path() %> 
+<%= link_to 'Zurueck', home_index_path() %>
+<script></script>

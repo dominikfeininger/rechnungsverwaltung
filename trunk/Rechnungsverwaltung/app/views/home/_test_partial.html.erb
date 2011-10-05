@@ -1,0 +1,5 @@
+<!-- <%# @customer = Customer.find_by_companyname(params[:key1]) %> -->
+<% @customers = Customer.where("companyname LIKE '%#{params[:key1]}%'").all() %>
+<% @customers.each do |c| %>
+<%= c.lastname%>
+<%end%> 
